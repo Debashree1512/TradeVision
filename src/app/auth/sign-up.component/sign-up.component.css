@@ -1,0 +1,82 @@
+
+/* ======= Page background (subtle) ======= */
+html, body {
+  height: 100%;
+}
+body {
+  background: #f7f8fb; /* soft light background */
+  margin: 0;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ======= Center the form as a "card" ======= */
+form.flex.flex-column.gap-3 {
+  /* sizing + centering */
+  max-width: 560px;
+  width: 92%;
+  margin: clamp(32px, 8vh, 72px) auto; /* horizontally centered; nice vertical breathing */
+  padding: 24px;
+
+  /* card feel */
+  background: #ffffff;
+  border: 1px solid #e5e7eb;        /* Gray-200 */
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(17, 24, 39, 0.08); /* soft, modern shadow */
+
+  /* maintain your flex column layout */
+  gap: 16px; /* complement existing gap-3 without fighting Tailwind */
+}
+
+/* ======= Section spacing inside the form ======= */
+form.flex.flex-column.gap-3 > div {
+  display: grid;
+  gap: 8px;
+}
+
+/* Optional, subtle separators for a polished rhythm */
+form.flex.flex-column.gap-3 > div {
+  position: relative;
+}
+form.flex.flex-column.gap-3 > div::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #eef1f5;
+  margin-top: 12px;
+}
+form.flex.flex-column.gap-3 > div:last-of-type::after {
+  display: none;
+}
+
+/* ======= Labels (crisp, professional) ======= */
+label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937; /* Gray-800 */
+  letter-spacing: 0.2px;
+}
+
+/* ======= Terms row spacing (keep Prime defaults) ======= */
+.flex.align-items-center.gap-2 {
+  gap: 10px; /* purely layout spacing */
+}
+
+/* ======= Button block spacing ======= */
+button.p-button {
+  margin-top: 8px; /* gentle spacing above the register button */
+}
+
+/* ======= Messages (align nicely without altering Prime styles) ======= */
+.p-message {
+  margin-top: 2px;
+}
+
+/* ======= Responsive tweaks ======= */
+@media (max-width: 640px) {
+  form.flex.flex-column.gap-3 {
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 8px 22px rgba(17, 24, 39, 0.07);
+  }
+}
