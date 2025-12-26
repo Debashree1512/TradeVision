@@ -1,0 +1,381 @@
+
+/* Base Layout */
+.tv-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;                 /* More breathing room */
+  padding-bottom: 3rem;
+}
+
+.container {
+  max-width: 1200px;         /* Constrain width for readability */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Toolbar */
+.tv-toolbar {
+  border: none;
+  background: var(--surface-0, #ffffff);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+.brand-icon {
+  font-size: 1.4rem;
+  color: var(--primary-color, #3B82F6);
+}
+.brand-text {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-color, #111827);
+}
+.brand-text-attractive {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #0f172a; /* Dark Slate */
+  text-transform: uppercase;
+}
+.toolbar-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.tv-btn-login {
+  color: var(--text-color-secondary, #6B7280);
+}
+.tv-btn-register {
+  background: var(--primary-color, #3B82F6);
+  border: none;
+}
+/* Container for everything on the right side */
+.header-right-content {
+  display: flex;      /* Forces horizontal layout */
+  align-items: center; /* Centers items vertically */
+  gap: 2rem;          /* Space between Nav Links and Auth Buttons */
+}
+
+/* Group for Dashboard, Markets, etc. */
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;           /* THIS IS THE KEY: It pushes the auth-group to the right */
+  margin-left: 2rem; /* Adds a little space after the TradeVision logo */
+}
+/* Group for Login/Register */
+.auth-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto; /* Double insurance to keep buttons on the right */
+}
+
+/* Simple vertical line to separate Nav from Auth */
+.v-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure buttons don't wrap to next line */
+::ng-deep .nav-link-btn, 
+::ng-deep .tv-primary-btn {
+  white-space: nowrap !important;
+}
+
+::ng-deep .p-menubar .p-menubar-end {
+  flex: 1;           /* Allows the "end" template to fill the bar */
+}
+
+
+
+
+
+
+
+/* Menubar */
+.tv-menubar {
+  border: none;
+  background: var(--surface-0, #ffffff);
+  border-bottom: 1px solid var(--surface-border, #E5E7EB);
+}
+.menu-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color-secondary, #6B7280);
+}
+.menu-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* Hero */
+.hero {
+  padding: 3rem 0;          /* Bigger top/bottom padding */
+  background: linear-gradient(180deg, rgba(59,130,246,0.08), rgba(59,130,246,0.02));
+}
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr; /* Slightly wider text area */
+  gap: 2rem;
+  align-items: start;
+}
+.hero-title {
+  font-size: clamp(2rem, 3.8vw, 2.75rem); /* Larger headline */
+  line-height: 1.2;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color, #0f172a);
+}
+.hero-title .accent {
+  color: var(--primary-color, #16a34a);
+}
+.hero-subtitle {
+  margin-top: 0.75rem;
+  font-size: 1.05rem;        /* Easier to read */
+  color: var(--text-color-secondary, #4B5563);
+}
+.hero-cta {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 0.75rem;
+}
+.hero-badges {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.hero-card {
+  box-shadow: 0 6px 20px rgba(59,130,246,0.15);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;                 /* More spacing */
+}
+.snapshot-item .label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-color-secondary, #6B7280);
+}
+.snapshot-item .value {
+  font-weight: 600;
+  color: var(--text-color, #111827);
+}
+.text-success { color: #16a34a; }
+.text-danger  { color: #dc2626; }
+
+.mini-chart-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.75rem;
+  background: var(--surface-100, #f3f4f6);
+  color: var(--text-color-secondary, #6B7280);
+  border-radius: 10px;
+}
+
+/* Ticker */
+.ticker {
+  position: relative;
+}
+.ticker-wrap {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 1rem;
+  padding: 0.75rem 1rem;     /* Taller ticker for readability */
+  background: var(--surface-50, #F9FAFB);
+  border: 1px solid var(--surface-border, #E5E7EB);
+  border-radius: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color, #111827);
+}
+.ticker-item .value {
+  font-weight: 600;
+}
+.ticker-item .change {
+  font-size: 0.9rem;
+}
+
+/* Modules */
+.modules {
+  padding: 2.5rem 0;        /* Section padding */
+}
+.section-title {
+  font-size: 1.75rem;
+  margin: 0 0 0.25rem 0;
+  color: var(--text-color, #111827);
+}
+.section-subtitle {
+  margin: 0 0 1.25rem 0;
+  color: var(--text-color-secondary, #4B5563);
+  font-size: 1rem;
+}
+.cards-grid {
+  display: flex;
+  flex-direction: row; /* Force side-by-side */
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.module-card {
+  height: 100%;
+  border-radius: 12px;
+}
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-color-secondary, #374151);
+}
+
+
+
+.card-body h3 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #0f172a;
+  margin: 0.5rem 1.5rem;
+}
+.card-body p {
+  padding: 0 1.5rem;
+  font-size: 0.95rem;
+  color: #64748b;
+}
+/* Stats */
+.stats {
+  padding: 2.5rem 0;
+}
+.stats-panel {
+  border: none;
+  background: var(--surface-0, #ffffff);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  border-radius: 12px;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  padding: 1rem;
+}
+.stat {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--surface-100, #f3f4f6);
+}
+.stat-value {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-color, #111827);
+}
+.stat-label {
+  font-size: 0.95rem;
+  color: var(--text-color-secondary, #6B7280);
+}
+
+/* CTA */
+.cta-banner {
+  padding: 2.5rem 0;
+}
+.cta-panel {
+  border: 2px dashed var(--primary-color, #3B82F6);
+  background: #f0f6ff;
+  border-radius: 12px;
+}
+.cta-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.cta-content p {
+  margin: 0;
+  color: var(--text-color-secondary, #334155);
+  font-size: 1.05rem;
+}
+.cta-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Footer */
+.footer {
+  padding: 2.5rem 0;
+  background: var(--surface-0, #ffffff);
+  border-top: 1px solid var(--surface-border, #E5E7EB);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr; /* Balanced columns */
+  gap: 1.75rem;
+}
+.footer h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color, #111827);
+}
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+.footer a {
+  color: var(--text-color-secondary, #4B5563);
+  text-decoration: none;
+}
+.footer a:hover {
+  color: var(--primary-color, #3B82F6);
+}
+.footer-copy {
+  margin-top: 0.5rem;
+  color: var(--text-color-secondary, #6B7280);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr; /* Stack hero content */
+  }
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablet */
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .cards-grid {
+    grid-template-columns: 1fr; /* 1 per row on mobile */
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ticker-wrap {
+    border-radius: 6px;
+  }
+}

@@ -1,1 +1,194 @@
-<p>home works!</p>
+<!-- <div class="tv-layout">
+
+  <p-toolbar styleClass="tv-toolbar">
+    <div class="p-toolbar-group-start">
+      <div class="brand-link"> <i class="pi pi-chart-line brand-icon"></i>
+        <span class="brand-text">TradeVision</span>
+      </div>
+    </div>
+    <div class="p-toolbar-group-end">
+      <div class="toolbar-actions">
+        <button pButton label="Login" class="tv-primary-btn"></button>
+        <!-- <button pButton pRipple type="button" label="Login" class="p-button-text tv-btn-login"></button> -->
+        <!-- <button pButton label="Register" class="tv-primary-btn"></button> -->
+        <!-- <button pButton pRipple type="button" label="Register" icon="pi pi-user-plus" class="p-button-rounded p-button-sm tv-btn-register"></button> -->
+      <!-- </div>
+    </div>
+  </p-toolbar> -->
+
+  <!-- <p-menubar styleClass="tv-menubar">
+    <ng-template pTemplate="start">
+      <div class="menu-title">
+        <i class="pi pi-briefcase"></i>
+        <span>Investor Portal</span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <div class="menu-actions">
+        <button pButton pRipple label="Dashboard" class="p-button-text" icon="pi pi-home"></button>
+        <button pButton pRipple label="Markets" class="p-button-text" icon="pi pi-chart-bar"></button>
+        <button pButton pRipple label="Orders" class="p-button-text" icon="pi pi-list-check"></button>
+        <button pButton pRipple label="Reports" class="p-button-text" icon="pi pi-file"></button>
+      </div>
+    </ng-template>
+  </p-menubar> -->
+
+<div class="tv-layout">
+
+ <p-menubar styleClass="tv-menubar-unified">
+  <ng-template pTemplate="start">
+    <div class="brand">
+      <i class="pi pi-chart-line brand-icon"></i>
+      <span class="brand-text-attractive">Trade<span class="vision-accent">Vision</span></span>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <div class="header-right-content">
+      
+      <nav class="nav-group">
+        <button pButton label="Dashboard" icon="pi pi-home" class="p-button-text nav-link-btn"></button>
+        <button pButton label="Markets" icon="pi pi-chart-bar" class="p-button-text nav-link-btn"></button>
+        <button pButton label="Orders" icon="pi pi-list-check" class="p-button-text nav-link-btn"></button>
+        <button pButton label="Reports" icon="pi pi-file" class="p-button-text nav-link-btn"></button>
+      </nav>
+
+      <div class="v-divider"></div>
+
+      <div class="auth-group">
+        <button pButton label="Login" class="p-button-text login-btn"></button>
+        <button pButton pRipple label="Register"  class="tv-primary-btn" routerLink="/signup"></button>
+       <!-- // <button pButton label="Register" class="tv-primary-btn"></button> -->
+      </div>
+
+    </div>
+  </ng-template>
+</p-menubar>
+
+
+
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-left">
+        <h1 class="hero-title">
+          Manage Portfolios. Execute Trades. <span class="accent">See the Market Clearly.</span>
+        </h1>
+        <p class="hero-subtitle">
+          A secure, scalable platform for brokerage firms, advisors, and retail investors.
+        </p>
+        <div class="hero-cta">
+          <button pButton label="Start Free Trial" class="tv-primary-btn"></button>
+          <!-- <button pButton pRipple label="Get Started" icon="pi pi-arrow-right" class="p-button p-button-lg"></button> -->
+          <!-- <button pButton pRipple label="View Demo" class="p-button-outlined p-button-lg ml-3"></button> -->
+           <button pButton label="View Demo" class="tv-primary-btn"></button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <p-card class="hero-card" header="Portfolio Snapshot" subheader="Sample View">
+          <div class="snapshot-grid">
+            <div class="snapshot-item">
+              <span class="label">Total Value</span>
+              <span class="value text-success">₹ 24,85,000</span>
+            </div>
+            <div class="snapshot-item">
+              <span class="label">Day P/L</span>
+              <span class="value text-success">+₹ 18,450</span>
+            </div>
+          </div>
+          <p-divider></p-divider>
+          <div class="mini-chart-placeholder">
+            <i class="pi pi-chart-line"></i>
+            <span>Live Data Stream Active</span>
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </section>
+
+  <section class="ticker">
+    <div class="ticker-wrap p-component">
+      <div class="ticker-item"><i class="pi pi-arrow-up text-success"></i> NIFTY 50 <span class="value">22,420.15</span></div>
+      <div class="ticker-item"><i class="pi pi-arrow-down text-danger"></i> SENSEX <span class="value">74,105.62</span></div>
+      <div class="ticker-item"><i class="pi pi-arrow-up text-success"></i> HDFCBANK <span class="value">1,480.05</span></div>
+    </div>
+  </section>
+
+<section class="modules">
+  <div class="container">
+    
+    <div class="section-header">
+      <h2 class="section-title">Platform Modules</h2>
+      <div class="headline-bar"></div>
+      <p class="section-subtitle">Comprehensive tools for modern asset management.</p>
+    </div>
+
+    <div class="cards-grid">
+      <p-card class="module-card">
+        <div class="card-icon-wrapper"><i class="pi pi-id-card"></i></div>
+        <div class="card-body">
+          <h3>Investor & Accounts</h3>
+          <p>Streamline onboarding with automated KYC workflows.</p>
+          <ul class="feature-list">
+            <li><i class="pi pi-check-circle text-success"></i> Register investors</li>
+            <li><i class="pi pi-check-circle text-success"></i> Digital KYC</li>
+          </ul>
+        </div>
+      </p-card>
+
+      <p-card class="module-card">
+        <div class="card-icon-wrapper"><i class="pi pi-shield"></i></div>
+        <div class="card-body">
+          <h3>Security & Access</h3>
+          <p>Bank-grade encryption and multi-factor authentication.</p>
+          <ul class="feature-list">
+            <li><i class="pi pi-lock text-success"></i> Multi-factor auth</li>
+            <li><i class="pi pi-lock text-success"></i> Secure Login</li>
+          </ul>
+        </div>
+      </p-card>
+
+      <p-card class="module-card">
+        <div class="card-icon-wrapper"><i class="pi pi-chart-line"></i></div>
+        <div class="card-body">
+          <h3>Portfolio Reports</h3>
+          <p>Real-time analytics and performance tracking.</p>
+          <ul class="feature-list">
+            <li><i class="pi pi-check-circle text-success"></i> Live Data Stream</li>
+            <li><i class="pi pi-check-circle text-success"></i> Monthly Reports</li>
+          </ul>
+        </div>
+      </p-card>
+    </div>
+    
+  </div>
+</section>
+
+  <footer class="footer p-component">
+    <div class="footer-grid">
+      <div>
+        <div class="brand">
+          <i class="pi pi-chart-line brand-icon"></i>
+          <span class="brand-text">TradeVision</span>
+        </div>
+        <p class="footer-copy">© 2025 TradeVision. All rights reserved.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul> <li><a href="#">Investor Portal</a></li>
+          <li><a href="#">Admin Dashboard</a></li>
+          <li><a href="#">Market Analytics</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Compliance</h4>
+        <ul>
+          <li><a href="#">SEBI Reports</a></li>
+          <li><a href="#">FINRA/SEC</a></li>
+          <li><a href="#">Audit Logs</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</div>
