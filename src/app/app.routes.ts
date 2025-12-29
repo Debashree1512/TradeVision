@@ -5,6 +5,9 @@ import { Signup } from './auth/sign-up.component/sign-up.component';
 
 
 
+
+
+
 function authGuard() {
   const token = localStorage.getItem('tv_token');
   if (token) return true;
@@ -13,7 +16,8 @@ function authGuard() {
 }
 
 export const routes: Routes = [
-//   { path: 'login', component: Login },
+  //  { path: 'login', component: Login },
+
   { path: 'signup', component:  Signup},
 { path: '', redirectTo: 'Home', pathMatch: 'full' }
 ];
