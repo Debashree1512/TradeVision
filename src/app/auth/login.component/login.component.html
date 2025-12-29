@@ -1,0 +1,40 @@
+<form [formGroup]="login" (ngSubmit)="submit()" class="flex flex-column gap-3">
+  <h1 style="text-align: center;color: rgb(195, 210, 224);">Login</h1>
+
+  <!-- Username or Gmail -->
+  <div>
+    <label for="userOrEmail">Username / gmail</label>
+    <input id="userOrEmail" pInputText type="text" formControlName="userOrEmail" />
+    <p-message
+      *ngIf="login.controls.userOrEmail.touched && login.controls.userOrEmail.errors?.['required']"
+      severity="error"
+      text="*Username or gmail is required">
+    </p-message>
+  </div>
+
+  <!-- Password -->
+  <div> 
+    <label for="password">Password</label> 
+    <p-password inputId="password" formControlName="password" [feedback]="false" [toggleMask]="true"> </p-password> 
+    <p-message *ngIf="login.controls.password.touched && login.controls.password.errors?.['required']" severity="error" text="*Password is required"> </p-message> 
+  </div>
+
+  <!-- Actions row -->
+  <div class="actions-row"> 
+    <div class="remember-me"> 
+      <p-checkbox formControlName="rememberMe" binary="true" inputId="rememberMe"></p-checkbox> 
+      <label for="rememberMe">Remember me</label> 
+    </div> 
+    <a routerLink="/forgot-password" class="forgot-link">Forgot password?</a> 
+  </div> 
+
+  <!-- Centered Login button -->
+  <div class="button-row">
+    <button
+      pButton
+      type="submit"
+      label="Login"
+      [disabled]="login.invalid">
+    </button>
+  </div>
+</form>
