@@ -10,7 +10,6 @@ import { ButtonModule } from 'primeng/button';
 import { MessageModule } from 'primeng/message'; 
 import { MessageService } from 'primeng/api'; 
 import { CheckboxModule } from 'primeng/checkbox';
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -22,7 +21,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     PasswordModule,
     MessageModule,
     CheckboxModule,
-    ToastModule
+    ToastModule,
+    
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
@@ -32,6 +32,10 @@ export class LoginComponent implements OnInit {
   private fb = inject(FormBuilder);
   private messages = inject(MessageService);
   private router = inject(Router);
+
+  goToSignup() { 
+    this.router.navigate(['/signup']); 
+  }
 
   // Form definition
   login = this.fb.group({

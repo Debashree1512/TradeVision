@@ -52,7 +52,7 @@
     <div class="flex align-items-center gap-2">
       <p-checkbox formControlName="agreeTerms" [binary]="true" inputId="agreeTerms"
                   [ngClass]="{'p-invalid': form.get('agreeTerms')?.invalid && form.get('agreeTerms')?.touched}"></p-checkbox>
-      <label for="agreeTerms">I agree to the Terms & Conditions</label>
+      <label for="agreeTerms"> I agree to the Terms & Conditions</label>
     </div>
     <small class="p-error" *ngIf="form.get('agreeTerms')?.touched && form.get('agreeTerms')?.invalid">
       *You must accept the terms.

@@ -13,7 +13,7 @@ html, body {
   min-height: 100vh;
   width: 100%;
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-              url('/bg_picture.webp') no-repeat center center fixed;
+              url('/bg_1.png') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -34,7 +34,7 @@ form.flex.flex-column.gap-3 {
 
 
 /* ======= Section spacing ======= */
-form.flex.flex-column.gap-3 > div {
+form.flex.flex-column.gap-3 > div:not(.signup-row){
   display: grid;
   gap: 8px;
 }
@@ -44,7 +44,7 @@ form.flex.flex-column.gap-3 > div::after {
   content: "";
   display: block;
   /*height: 1px;*/
-  background: #a4a9b0;
+  background: #ffffff;
   margin-top: 12px;
 }
 form.flex.flex-column.gap-3 > div:last-of-type::after {
@@ -55,7 +55,7 @@ form.flex.flex-column.gap-3 > div:last-of-type::after {
 label {
   font-size: 1rem;
   font-weight: 600;
-  color: #b6bdc7;
+  color: #ffffff;
   letter-spacing: 0.2px;
 }
 
@@ -125,3 +125,42 @@ button.p-button {
     width: 100%; 
   }
 }
+
+/* ======= Signup row side by side ======= */
+.signup-row { 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;  
+  gap: 8px;  
+  margin-top: 1rem; 
+}
+
+.signup-row span {
+  color: #ffffff;            /* white text */
+  font-size: 1rem;
+}
+
+.signup-link {
+  color: #0e3487;            /* white link */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+  color: #264382;            /* lighter hover effect */
+}
+
+::ng-deep .p-password,
+::ng-deep .p-password-input {
+    width: 100% !important;
+}
+ 
+/* 2. Ensure the actual input element inside the component is full width */
+::ng-deep .p-password input {
+    width: 100% !important;
+    padding: 10px; /* Optional: adds consistent padding to match other inputs */
+}
+
+
+

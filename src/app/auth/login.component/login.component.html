@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 
 <form [formGroup]="login" (ngSubmit)="submit()" class="flex flex-column gap-3">
-  <h1 style="text-align: center;color: rgb(195, 210, 224);">Login</h1>
+  <h1 style="text-align: center;color: rgb(242, 244, 246);">Login</h1>
 
   <!-- Username or Gmail -->
   <div>
@@ -38,5 +38,10 @@
       label="Login"
       [disabled]="login.invalid">
     </button>
+  </div>
+
+  <div class="signup-row">
+    <span>Create an account?</span>
+    <a routerLink="/signup" class="signup-link" (click)="goToSignup()">Sign up</a>
   </div>
 </form>
