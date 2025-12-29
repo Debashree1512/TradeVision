@@ -3,6 +3,7 @@
 html, body {
   height: 100%;
 }
+
 body {
   background: #f7f8fb; /* soft light background */
   margin: 0;
@@ -19,10 +20,15 @@ form.flex.flex-column.gap-3 {
   padding: 24px;
 
   /* card feel */
-  background: #ffffff;
-  border: 1px solid #e5e7eb;        /* Gray-200 */
-  border-radius: 14px;
-  box-shadow: 0 10px 28px rgba(17, 24, 39, 0.08); /* soft, modern shadow */
+/* 10% Opacity Background */
+  background: rgba(255, 255, 255, 0.1) !important; 
+  
+  /* Adding a blur makes that 10% look like frosted glass */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none !important;
+  border-radius: 5%;
+  box-shadow: none !important;
 
   /* maintain your flex column layout */
   gap: 16px; /* complement existing gap-3 without fighting Tailwind */
@@ -40,7 +46,7 @@ form.flex.flex-column.gap-3 > div {
 }
 form.flex.flex-column.gap-3 > div::after {
   content: "";
-  display: block;
+  display: none !important;
   height: 1px;
   background: #eef1f5;
   margin-top: 12px;
@@ -51,10 +57,15 @@ form.flex.flex-column.gap-3 > div:last-of-type::after {
 
 /* ======= Labels (crisp, professional) ======= */
 label {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #1f2937; /* Gray-800 */
-  letter-spacing: 0.2px;
+    color: #ffffff !important; /* Change this to your preferred hex code */
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Makes text "pop" against the image */
+    transition: color 0.3s ease;
+}
+
+/* Specific fix for the checkbox label which often stays dark */
+label[for="agreeTerms"] {
+    color: #ffffff !important;
 }
 
 /* ======= Terms row spacing (keep Prime defaults) ======= */
@@ -71,6 +82,35 @@ button.p-button {
 .p-message {
   margin-top: 2px;
 }
+/* Force PrimeNG error class to be red */
+.p-error {
+    color: #e24c4c !important; /* PrimeNG's standard error red */
+    display: block;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Optional: Make the input borders red when invalid */
+input.p-invalid, 
+.p-password.p-invalid > input,
+.p-checkbox.p-invalid .p-checkbox-box {
+    border-color: #e24c4c !important;
+}
+/* This targets the entire component area */
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    
+    /* The leading slash / is the most important part */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('/bg_1.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
 
 /* ======= Responsive tweaks ======= */
 @media (max-width: 640px) {
