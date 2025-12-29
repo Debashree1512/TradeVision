@@ -2,8 +2,7 @@ import { Routes } from '@angular/router';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router'
 import { Signup } from './auth/sign-up.component/sign-up.component';
-
-
+import { Home } from './home/home';
 
 
 
@@ -19,7 +18,9 @@ export const routes: Routes = [
   //  { path: 'login', component: Login },
 
   { path: 'signup', component:  Signup},
-{ path: '', redirectTo: 'Home', pathMatch: 'full' }
+  // { path: 'home', component:Home , canActivate: [authGuard] },
+  {path:'', component:Home}
+//   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 
