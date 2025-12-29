@@ -1,125 +1,63 @@
-
 <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-column gap-3">
 
-  <!-- Full Name -->
-  <div>
+  <div class="flex flex-column gap-1">
     <label for="fullName">Full name</label>
-    <input id="fullName" pInputText formControlName="fullName" />
-    <p-message
-      *ngIf="form.controls.fullName.touched && form.controls.fullName.errors?.['required']"
-      severity="error"
-      text="Full name is required">
-    </p-message>
-    <p-message
-      *ngIf="form.controls.fullName.touched && form.controls.fullName.errors?.['maxlength']"
-      severity="error"
-      text="Full name is too long">
-    </p-message>
+    <input id="fullName" pInputText formControlName="fullName" 
+           [ngClass]="{'p-invalid': form.get('fullName')?.invalid && form.get('fullName')?.touched}" />
+    <small class="p-error" *ngIf="form.get('fullName')?.touched && form.get('fullName')?.hasError('required')">
+      *Full name is required.
+    </small>
   </div>
-
-  <!-- Email -->
-  <div>
+<br>
+  <div class="flex flex-column gap-1">
     <label for="email">Email</label>
-    <input id="email" pInputText type="email" formControlName="email" />
-    <p-message
-      *ngIf="form.controls.email.touched && form.controls.email.errors?.['required']"
-      severity="error"
-      text="Email is required">
-    </p-message>
-    <p-message
-      *ngIf="form.controls.email.touched && form.controls.email.errors?.['email']"
-      severity="error"
-      text="Enter a valid email">
-    </p-message>
+    <input id="email" pInputText type="email" formControlName="email" 
+           [ngClass]="{'p-invalid': form.get('email')?.invalid && form.get('email')?.touched}" />
+    <small class="p-error" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+      <span *ngIf="form.get('email')?.hasError('required')">*Email is required.</span>
+      <span *ngIf="form.get('email')?.hasError('email')">*Invalid email address.</span>
+    </small>
   </div>
-
-  <!-- Username -->
-  <div>
+<br>
+  <div class="flex flex-column gap-1">
     <label for="username">Username</label>
-    <input id="username" pInputText formControlName="username" />
-    <p-message
-      *ngIf="form.controls.username.touched && form.controls.username.errors?.['required']"
-      severity="error"
-      text="Username is required">
-    </p-message>
-    <p-message
-      *ngIf="form.controls.username.touched && form.controls.username.errors?.['minlength']"
-      severity="error"
-      text="Minimum 4 characters">
-    </p-message>
-    <p-message
-      *ngIf="form.controls.username.touched && form.controls.username.errors?.['maxlength']"
-      severity="error"
-      text="Maximum 32 characters">
-    </p-message>
+    <input id="username" pInputText formControlName="username" 
+           [ngClass]="{'p-invalid': form.get('username')?.invalid && form.get('username')?.touched}" />
+    <small class="p-error" *ngIf="form.get('username')?.touched && form.get('username')?.hasError('required')">
+      *Username is required.
+    </small>
   </div>
-
-  <!-- Password -->
-  <div>
+<br>
+  <div class="flex flex-column gap-1">
     <label for="password">Password</label>
-    <p-password
-      inputId="password"
-      formControlName="password"
-      [feedback]="true"
-      [toggleMask]="true">
-    </p-password>
-
-    <p-message
-      *ngIf="form.controls.password.touched && form.controls.password.errors?.['required']"
-      severity="error"
-      text="Password is required">
-    </p-message>
-    <p-message
-      *ngIf="form.controls.password.touched && form.controls.password.errors?.['minlength']"
-      severity="error"
-      text="Minimum 8 characters">
-    </p-message>
-    <p-message
-      *ngIf="form.controls.password.touched && form.controls.password.errors?.['passwordComplexity']"
-      severity="error"
-      text="Include letters & numbers">
-    </p-message>
+    <p-password id="password" formControlName="password" [toggleMask]="true" styleClass="w-full" inputStyleClass="w-full"
+                [ngClass]="{'p-invalid': form.get('password')?.invalid && form.get('password')?.touched}"></p-password>
+    <small class="p-error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+      <span *ngIf="form.get('password')?.hasError('required')">*Password is required.</span>
+      <span *ngIf="form.get('password')?.hasError('passwordComplexity')">*Use letters and numbers.</span>
+    </small>
   </div>
-
-  <!-- Confirm Password -->
-  <div>
+<br>
+  <div class="flex flex-column gap-1">
     <label for="confirmPassword">Confirm password</label>
-    <p-password
-      inputId="confirmPassword"
-      formControlName="confirmPassword"
-      [feedback]="false"
-      [toggleMask]="true">
-    </p-password>
-
-    <p-message
-      *ngIf="form.controls.confirmPassword.touched && form.controls.confirmPassword.errors?.['required']"
-      severity="error"
-      text="Please confirm your password">
-    </p-message>
-    <p-message
-      *ngIf="form.errors?.['mismatch'] && form.controls.confirmPassword.touched"
-      severity="error"
-      text="Passwords do not match">
-    </p-message>
+    <p-password id="confirmPassword" formControlName="confirmPassword" [feedback]="false" [toggleMask]="true" styleClass="w-full" inputStyleClass="w-full"
+                [ngClass]="{'p-invalid': (form.get('confirmPassword')?.invalid || form.hasError('mismatch')) && form.get('confirmPassword')?.touched}"></p-password>
+    <small class="p-error" *ngIf="form.get('confirmPassword')?.touched">
+      <span *ngIf="form.get('confirmPassword')?.hasError('required')">*Please confirm your password.</span>
+      <span *ngIf="form.hasError('mismatch')">*Passwords do not match.</span>
+    </small>
   </div>
-
-  <!-- Terms & Conditions -->
-  <div class="flex align-items-center gap-2">
-    <p-checkbox formControlName="agreeTerms" binary="true" inputId="agreeTerms"></p-checkbox>
-    <label for="agreeTerms">I agree to the Terms & Conditions</label>
+<br>
+  <div class="flex flex-column gap-1">
+    <div class="flex align-items-center gap-2">
+      <p-checkbox formControlName="agreeTerms" [binary]="true" inputId="agreeTerms"
+                  [ngClass]="{'p-invalid': form.get('agreeTerms')?.invalid && form.get('agreeTerms')?.touched}"></p-checkbox>
+      <label for="agreeTerms">I agree to the Terms & Conditions</label>
+    </div>
+    <small class="p-error" *ngIf="form.get('agreeTerms')?.touched && form.get('agreeTerms')?.invalid">
+      *You must accept the terms.
+    </small>
   </div>
-  <p-message
-    *ngIf="form.controls.agreeTerms.touched && form.controls.agreeTerms.errors?.['required']"
-    severity="error"
-    text="You must accept the Terms & Conditions">
-  </p-message>
-
-  <!-- Register button -->
-  <button
-    pButton
-    type="submit"
-    label="Register"
-    [disabled]="form.invalid">
-  </button>
+<br>
+  <p-button type="submit" label="Sign Up" styleClass="w-full mt-2"></p-button>
 </form>
-
