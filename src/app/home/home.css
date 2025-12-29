@@ -32,13 +32,13 @@
 .brand-text {
   font-weight: 700;
   font-size: 1.05rem;
-  color: var(--text-color, #111827);
+  color: var(--text-color, #ffffff);
 }
 .brand-text-attractive {
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -1px;
-  color: #0f172a; /* Dark Slate */
+  color: #ffffff; /* Dark Slate */
   text-transform: uppercase;
 }
 .toolbar-actions {
@@ -130,7 +130,7 @@
   font-size: clamp(2rem, 3.8vw, 2.75rem); /* Larger headline */
   line-height: 1.2;
   margin: 0 0 0.5rem 0;
-  color: var(--text-color, #0f172a);
+  color: var(--text-color, #ffffff);
 }
 .hero-title .accent {
   color: var(--primary-color, #16a34a);
@@ -138,7 +138,7 @@
 .hero-subtitle {
   margin-top: 0.75rem;
   font-size: 1.05rem;        /* Easier to read */
-  color: var(--text-color-secondary, #4B5563);
+  color: var(--text-color-secondary, #8daee4);
 }
 .hero-cta {
   margin-top: 1.25rem;
@@ -151,7 +151,7 @@
   gap: 0.5rem;
 }
 .hero-card {
-  box-shadow: 0 6px 20px rgba(59,130,246,0.15);
+  box-shadow: 0 6px 20px #8daee4;
   border-radius: 14px;
   overflow: hidden;
 }
@@ -163,11 +163,11 @@
 .snapshot-item .label {
   display: block;
   font-size: 0.85rem;
-  color: var(--text-color-secondary, #6B7280);
+  color: var(--text-color-secondary, #8daee4);
 }
 .snapshot-item .value {
   font-weight: 600;
-  color: var(--text-color, #111827);
+  color: var(--text-color, );
 }
 .text-success { color: #16a34a; }
 .text-danger  { color: #dc2626; }
@@ -178,7 +178,7 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 1.75rem;
-  background: var(--surface-100, #f3f4f6);
+  background: var(--surface-100, #f3f4f6#111827);
   color: var(--text-color-secondary, #6B7280);
   border-radius: 10px;
 }
@@ -219,11 +219,11 @@
 .section-title {
   font-size: 1.75rem;
   margin: 0 0 0.25rem 0;
-  color: var(--text-color, #111827);
+  color: var(--text-color, #ffffff);
 }
 .section-subtitle {
   margin: 0 0 1.25rem 0;
-  color: var(--text-color-secondary, #4B5563);
+  color: var(--text-color-secondary, #ffffff);
   font-size: 1rem;
 }
 .cards-grid {
@@ -248,7 +248,7 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  color: var(--text-color-secondary, #374151);
+  color: var(--text-color-secondary, #8daee4);
 }
 
 
@@ -256,13 +256,13 @@
 .card-body h3 {
   font-weight: 700;
   font-size: 1.2rem;
-  color: #0f172a;
+  color: #f4f7ff;
   margin: 0.5rem 1.5rem;
 }
 .card-body p {
   padding: 0 1.5rem;
   font-size: 0.95rem;
-  color: #64748b;
+  color: #0bc669;
 }
 /* Stats */
 .stats {
@@ -378,4 +378,84 @@
   .ticker-wrap {
     border-radius: 6px;
   }
+}
+
+
+/* ======= Main Layout Background ======= */
+:host {
+    display: block;
+    min-height: 100vh;
+    width: 100%;
+    /* Deep Blue Gradient - Clean and professional */
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #f8fafc;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ======= Menubar ======= */
+::ng-deep .tv-menubar-unified {
+    background: rgba(30, 41, 59, 0.7) !important; /* Slightly lighter blue */
+    backdrop-filter: blur(10px);
+    border: none !important;
+    border-bottom: 1px solid rgba(74, 222, 128, 0.2) !important; /* Subtle Green border */
+    padding: 0.5rem 2rem;
+}
+
+/* ======= Brand Colors ======= */
+.vision-accent {
+    color: #4ade80; /* The "Green" in TradeVision */
+    text-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+/* ======= Hero Section ======= */
+.hero-title .accent {
+    color: #4ade80; /* Vibrant Green */
+}
+
+/* ======= The "Card" Look (10% Transparent Blue) ======= */
+::ng-deep .hero-card, 
+::ng-deep .module-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(74, 222, 128, 0.15) !important; /* Greenish border */
+    border-radius: 16px !important;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+::ng-deep .module-card:hover {
+    border-color: #4ade80 !important; /* Glows green on hover */
+    transform: translateY(-5px);
+}
+
+/* ======= Icon Wrappers ======= */
+.card-icon-wrapper i {
+    color: #4ade80; /* Green icons */
+    font-size: 2rem;
+}
+
+/* ======= Buttons (The "Trade" Green) ======= */
+.tv-primary-btn {
+    background: linear-gradient(90deg, #22c55e, #16a34a) !important;
+    border: none !important;
+    color: white !important;
+    box-shadow: 0 4px 14px 0 rgba(34, 197, 94, 0.39);
+}
+
+.tv-primary-btn:hover {
+    background: #4ade80 !important;
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.23);
+}
+
+/* ======= Ticker (Blue & Green Contrast) ======= */
+.ticker {
+    background: #020617; /* Very deep blue */
+    border-top: 1px solid rgba(74, 222, 128, 0.1);
+    padding: 12px 0;
+}
+
+.text-success {
+    color: #4ade80 !important;
+}
+
+.text-danger {
+    color: #f87171 !important; /* Keeping Red for contrast in markets */
 }
