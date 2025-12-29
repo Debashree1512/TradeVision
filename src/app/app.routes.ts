@@ -4,6 +4,9 @@ import { Router } from '@angular/router'
 import { Signup } from './auth/sign-up.component/sign-up.component';
 import { Home } from './home/home';
 
+
+
+
 function authGuard() {
   const token = localStorage.getItem('tv_token');
   if (token) return true;
