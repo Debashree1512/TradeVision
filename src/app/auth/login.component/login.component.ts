@@ -1,38 +1,53 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ToastModule } from 'primeng/toast';
+// PrimeNG Imports
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { MessageModule } from 'primeng/message';   // p-message for inline errors
-import { MessageService } from 'primeng/api';       // for toast notifications
-import { CommonModule } from '@angular/common';
+import { MessageModule } from 'primeng/message'; 
+import { MessageService } from 'primeng/api'; 
 import { CheckboxModule } from 'primeng/checkbox';
-import { ValidationErrors } from '@angular/forms';
-import { AbstractControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-login.component',
-  imports: [ReactiveFormsModule,ButtonModule, InputTextModule, PasswordModule, MessageModule, CommonModule, CheckboxModule],
+  selector: 'app-login',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    InputTextModule,
+    PasswordModule,
+    MessageModule,
+    CheckboxModule,
+    ToastModule
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
+  providers: [MessageService] // Ensure MessageService is available
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   private fb = inject(FormBuilder);
   private messages = inject(MessageService);
   private router = inject(Router);
 
-  login = this.fb.group(
-    { userOrEmail: ['', Validators.required], 
-      password: ['', [ Validators.required ]], 
-      rememberMe: [false]
-    }); 
+  // Form definition
+  login = this.fb.group({
+    userOrEmail: ['', Validators.required],
+    password: ['', Validators.required],
+    rememberMe: [false]
+  });
+
   ngOnInit(): void {
-    const rememberedUser = localStorage.getItem('rememberedUser'); 
+    // Check if 'Remember Me' was previously used
+    const rememberedUser = localStorage.getItem('rememberedUser');
     const rememberedPass = localStorage.getItem('rememberedPass');
+    
     if (rememberedUser && rememberedPass) {
       this.login.patchValue({
-        userOrEmail: rememberedUser, 
+        userOrEmail: rememberedUser,
         password: rememberedPass,
         rememberMe: true
       });
@@ -40,36 +55,55 @@ export class LoginComponent {
   }
 
   submit(): void {
+    // 1. Validate Form Basics
     if (this.login.invalid) {
       this.login.markAllAsTouched();
       this.messages.add({
         severity: 'error',
         summary: 'Fix errors',
-        detail: 'Please correct the highlighted fields.'
+        detail: 'Please enter your credentials.'
       });
       return;
     }
 
     const { userOrEmail, password, rememberMe } = this.login.value;
 
-    const validUser = userOrEmail === 'aashmitha' || userOrEmail === 'aashmitha@gmail.com';
-    const validPass = password === 'abc123';
+    // 2. Fetch users from LocalStorage (the "database")
+    const users = JSON.parse(localStorage.getItem('tv_users') || '[]');
 
-    if (!validUser && !validPass) {
-      this.messages.add({ severity: 'error', summary: 'Invalid credentials', detail: 'Invalid credentials.' });
+    // 3. Search for the user by Email OR Username
+    const foundUser = users.find((u: any) => 
+      u.email?.toLowerCase() === userOrEmail?.toLowerCase() || 
+      u.username?.toLowerCase() === userOrEmail?.toLowerCase()
+    );
+
+    // 4. Validation Checks
+    if (!foundUser) {
+      this.messages.add({ 
+        severity: 'error', 
+        summary: 'Access Denied', 
+        detail: 'User not found. Please sign up first.' 
+      });
       return;
     }
-    if (!validUser) {
-      this.messages.add({ severity: 'error', summary: 'Invalid username', detail: 'Please enter a valid username or Gmail.' });
-      return;
-    }
-    if (!validPass) {
-      this.messages.add({ severity: 'error', summary: 'Invalid password', detail: 'Please enter the correct password.' });
+
+    if (foundUser.password !== password) {
+      this.messages.add({ 
+        severity: 'error', 
+        summary: 'Security Error', 
+        detail: 'Incorrect password.' 
+      });
       return;
     }
 
-    this.messages.add({ severity: 'success', summary: 'Welcome', detail: 'Welcome aashmitha' });
+    // 5. Successful Login
+    this.messages.add({ 
+      severity: 'success', 
+      summary: 'Success', 
+      detail: `Welcome back, ${foundUser.fullName}!` 
+    });
 
+    // Handle "Remember Me" logic
     if (rememberMe) {
       localStorage.setItem('rememberedUser', userOrEmail!);
       localStorage.setItem('rememberedPass', password!);
@@ -77,5 +111,13 @@ export class LoginComponent {
       localStorage.removeItem('rememberedUser');
       localStorage.removeItem('rememberedPass');
     }
+
+    // Store the "Current Session" so other pages know you are logged in
+    localStorage.setItem('currentUser', JSON.stringify(foundUser));
+
+    // Redirect to home/dashboard after a small delay to show the success message
+    setTimeout(() => {
+      this.router.navigate(['/dashboard']);
+    }, 1200);
   }
 }
