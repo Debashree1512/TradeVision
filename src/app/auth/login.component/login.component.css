@@ -1,0 +1,127 @@
+/* ======= Page background ======= */
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #f7f8fb; 
+}
+
+/* Center the whole page */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+              url('/bg_picture.webp') no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+/* ======= Form card ======= */
+form.flex.flex-column.gap-3 {
+  max-width: 460px;
+  width: 92%;
+  margin: clamp(32px, 8vh, 72px) auto;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.2); /* transparent white */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(17, 24, 39, 0.25);
+  gap: 16px;
+  backdrop-filter: blur(8px); /* frosted glass effect */
+}
+
+
+/* ======= Section spacing ======= */
+form.flex.flex-column.gap-3 > div {
+  display: grid;
+  gap: 8px;
+}
+
+/* ======= Separator lines ======= */
+form.flex.flex-column.gap-3 > div::after {
+  content: "";
+  display: block;
+  /*height: 1px;*/
+  background: #a4a9b0;
+  margin-top: 12px;
+}
+form.flex.flex-column.gap-3 > div:last-of-type::after {
+  display: none;
+}
+
+/* ======= Labels ======= */
+label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #b6bdc7;
+  letter-spacing: 0.2px;
+}
+
+/* ======= Actions row ======= */
+.actions-row {
+  display: flex !important;       
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;                    
+  margin-top: 8px;
+}
+
+/* Left group (checkbox + label) */
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Forgot password link styling */
+.forgot-link {
+  padding-left: 150px;
+  font-size: 1rem;
+  color: #0e3487;
+  text-decoration: none;
+  font-weight: 500;
+}
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+
+/* ======= Centered button ======= */
+.button-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+button.p-button {
+  width: 100%; 
+  margin-top: 10px;
+}
+
+/* ======= Messages ======= */
+.p-message {
+  margin-top: 2px;
+}
+.p-message.p-message-error {
+  background: none !important;
+  font-size: small;
+}
+
+/* optional: hide the default error icon */
+.p-message.p-message-error .p-message-icon {
+  display: none !important;
+}
+
+
+/* ======= Responsive tweaks ======= */
+@media (max-width: 640px) {
+  form.flex.flex-column.gap-3 {
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 8px 22px rgba(17, 24, 39, 0.07);
+  }
+  button.p-button {
+    width: 100%; 
+  }
+}
